@@ -1,2 +1,3 @@
 # -Web-Frontend-Project
-This is a simple Login Form project built using HTML and CSS. It provides a clean, modern, and responsive user interface for user authentication. The form includes fields for Email and Password, a Remember Me option, and a link for Forgot Password.
+This repository contains my Frontend Web Development Projects, created as part of my learning and practice journey.
+It includes a collection of small, clean, and responsive UI projects made using HTML, CSS, JavaScript, and React.
