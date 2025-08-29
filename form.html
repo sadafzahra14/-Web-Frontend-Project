@@ -1,0 +1,203 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0f172a;          
+      --bg2:#1e293b;          
+      --card:#0b1224cc;     
+      --primary:#6366f1;      
+      --primary-600:#5458ee;
+      --ring:#94a3b8;         
+      --text:#e5e7eb;        
+      --muted:#94a3b8;        
+      --danger:#ef4444;       
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    * { box-sizing:border-box }
+    html,body { height:100% }
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% -10%, #1f2a5599, transparent 60%),
+        radial-gradient(1100px 900px at 110% 10%, #0ea5e966, transparent 50%),
+        linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:linear-gradient(180deg, rgba(17,24,39,.65), rgba(11,18,36,.65));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:28px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px; margin-bottom:6px;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:12px;
+      background: conic-gradient(from 180deg at 50% 50%, #60a5fa, #a78bfa, #34d399, #60a5fa);
+      box-shadow: 0 6px 16px rgba(99,102,241,.45), inset 0 0 18px rgba(255,255,255,.25);
+    }
+    h1{ font-size:22px; margin:0; letter-spacing:.2px }
+    p.sub{ margin:6px 0 22px; color:var(--muted); font-size:14px }
+
+    form{ display:grid; gap:14px }
+
+    .field{
+      display:grid; gap:8px;
+    }
+    label{
+      font-size:13px; color:var(--muted);
+    }
+    .control{
+      position:relative;
+    }
+    input[type="email"],
+    input[type="password"]{
+      width:100%;
+      padding:14px 14px 14px 44px;
+      border:1px solid rgba(148,163,184,.28);
+      background: rgba(2,6,23,.55);
+      color:var(--text);
+      border-radius:14px;
+      outline:none;
+      transition: border-color .15s ease, box-shadow .15s ease, transform .06s ease;
+    }
+    input::placeholder { color: #94a3b888 }
+    input:focus{
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(99,102,241,.18);
+    }
+    input:active{ transform: scale(.998) }
+
+    .icon{
+      position:absolute; inset:0 auto 0 12px; width:20px; display:grid; place-items:center;
+      color:#9aa4b2; pointer-events:none;
+    }
+    .row{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:2px;
+    }
+    .checkbox{
+      display:flex; align-items:center; gap:10px; user-select:none;
+      color:var(--muted); font-size:13px;
+    }
+    .checkbox input{ width:16px; height:16px; accent-color: var(--primary) }
+
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      padding:12px 16px; border-radius:14px; font-weight:700;
+      background: linear-gradient(180deg, var(--primary), var(--primary-600));
+      color:white; letter-spacing:.2px; width:100%;
+      box-shadow: 0 10px 20px rgba(99,102,241,.35);
+      transition: transform .08s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{ filter: brightness(1.04) }
+    .btn:active{ transform: translateY(1px) }
+
+    .links{
+      margin-top:14px; display:flex; justify-content:center; gap:8px; font-size:13px; color:var(--muted);
+    }
+    .links a{
+      color:var(--text); text-decoration:none; border-bottom:1px dashed rgba(229,231,235,.4);
+    }
+    .links a:hover{ border-bottom-style: solid }
+    .divider{
+      margin:16px 0 6px; height:1px; background: linear-gradient(90deg, transparent, rgba(148,163,184,.25), transparent);
+      border:none;
+    }
+    .footer-note{
+      text-align:center; color:var(--muted); font-size:12px; margin-top:8px;
+    }
+
+    /* small screens */
+    @media (max-width: 380px){
+      .card{ padding:22px }
+      input[type="email"], input[type="password"]{ padding-left:42px }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1 id="title">Welcome back</h1>
+        <p class="sub">Sign in to continue</p>
+      </div>
+    </div>
+
+    <form action="home.html" method="post" novalidate>
+      <!-- Email -->
+      <div class="field">
+        <label for="email">Email</label>
+        <div class="control">
+          <span class="icon" aria-hidden="true">✉️</span>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            inputmode="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+            aria-required="true"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="control">
+          <span class="icon" aria-hidden="true">🔒</span>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            minlength="6"
+            required
+            aria-required="true"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="checkbox">
+          <input type="checkbox" name="remember" id="remember">
+          <span>Remember me</span>
+        </label>
+        <a href="#" style="font-size:13px; color:#c7d2fe; text-decoration:none;">Forgot password?</a>
+      </div>
+
+      <button class="btn" type="submit">Sign in</button>
+
+      <hr class="divider" />
+
+      <div class="links">
+        <span>New here?</span>
+        <a href="#">Create an account</a>
+      </div>
+      <p class="footer-note">This is a demo UI. Hook it to your backend or auth service.</p>
+    </form>
+  </main>
+</body>
+</html>
